@@ -1,0 +1,1 @@
+import Simple from '../../demo/simple'

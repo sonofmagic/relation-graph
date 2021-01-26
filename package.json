@@ -4,8 +4,21 @@
   "description": "relation-graph，Vue 关联关系图谱组件，可以展示如组织机构图谱、股权架构图谱、集团关系图谱等知识图谱，可提供多种图谱布局，包括树状布局、中心布局、力学布局自动布局等。Vue component for relationship graph , which can display knowledge graphs, such as organization graph, equity structure graph, group relationship graph, etc.",
   "main": "dist/relation-graph.min.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs --no-cache",
+    "docs:build": "vuepress build docs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "node ./build/verify-commit-msg.js"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "author": "seeks<seeksdream@qq.com>",
   "license": "MIT",
@@ -45,8 +58,10 @@
     "es6-promise": "^4.1.1",
     "eslint": "^7.11.0",
     "eslint-plugin-vue": "^7.5.0",
+    "husky": "^4.3.8",
     "less": "^4.1.0",
     "less-loader": "^7.3.0",
+    "lint-staged": "^10.5.3",
     "node-sass": "^5.0.0",
     "sass": "^1.14.3",
     "sass-loader": "^10.1.1",
@@ -58,7 +73,8 @@
     "vue-router": "^3.0.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.9",
-    "webpack": "^5.17.0",
+    "vuepress": "^1.8.0",
+    "webpack": "^4.44.0",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.1.3"
