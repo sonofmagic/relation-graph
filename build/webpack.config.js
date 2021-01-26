@@ -10,7 +10,7 @@ module.exports = merge({
     // 'relation-graph': ['babel-polyfill', './src/index.js']
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'relation-graph.min.js',
     publicPath: '/dist/',
     library: 'relation-graph',
