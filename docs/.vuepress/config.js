@@ -14,33 +14,30 @@ module.exports = {
             {text:'工程地址',link:pkg.repository.url}
         ],
         // 为以下路由添加侧边栏
-    // sidebar: {
-    //     '/component/': [
-    //       {
-    //         title: '指南',
-    //         collapsable: false,
-    //         // children: [
-    //         //   'guide',
-    //         //   'theme',
-    //         //   'i18n',
-    //         //   'transition',
-    //         // ]
-    //       },
-    //       {
-    //         title: '支持与维护',
-    //         collapsable: false,
-    //         // children: [
-    //         //   'issue',
-    //         //   'development',
-    //         // ]
-    //       },
-    //       {
-    //         title: '组件',
-    //         collapsable: false,
-    //         children: addSidebar.sidebars
-    //       }
-    //     ]
-    //   }
+        sidebar:{
+            '/demo/':[
+                {
+                    title: '基本',
+                    collapsable: false,
+                    sidebarDepth: 0,
+                    children: [
+                        'simple/simple'
+                    ]
+                },
+                {
+                    title: '布局',
+                    collapsable: false,
+                },
+                {
+                    title: '使用场景',
+                    collapsable: false,
+                },
+                {
+                    title: '高级 & 交互',
+                    collapsable: false,
+                }
+            ]
+        }
     },
     configureWebpack: {
         resolve: {
