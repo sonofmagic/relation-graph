@@ -6,8 +6,8 @@
         <div style="line-height: 20px;">节点筛选：</div>
         <el-radio-group v-model="checked_sex" size="mini" @change="doFilter">
           <el-radio-button label="">全部</el-radio-button>
-          <el-radio-button label="男"></el-radio-button>
-          <el-radio-button label="女"></el-radio-button>
+          <el-radio-button label="男" />
+          <el-radio-button label="女" />
         </el-radio-group>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <el-radio-group v-model="checked_isgoodman" size="mini" style="margin-left:50px;" @change="doFilter">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import SeeksRelationGraph from 'relation-graph'
+import SeeksRelationGraph from '../../../src/index.js'
 export default {
   name: 'SeeksRelationGraphDemo',
   components: { SeeksRelationGraph },

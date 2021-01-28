@@ -46,7 +46,10 @@ module.exports = merge({
     }
   },
   resolve: {
-    extensions: ['.js', '.vue']
+    extensions: ['.js', '.vue'],
+    alias:{ 
+      '@':path.resolve(__dirname, '../src')
+    }
   },
   module: {
     rules: [

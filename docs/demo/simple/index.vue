@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import RelationGraph from 'relation-graph'
+import RelationGraph from '../../../src/index.js'
 import dataForDemo from './data.json'
 export default {
-  name: 'Demo',
+  name: 'Simple',
   components: { RelationGraph },
   data() {
     return {
