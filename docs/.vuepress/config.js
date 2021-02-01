@@ -21,7 +21,9 @@ module.exports = {
                     collapsable: false,
                     sidebarDepth: 0,
                     children: [
-                        'simple/simple'
+                        'simple/simple',
+                        'node/node',
+                        // 'line/line'
                     ]
                 },
                 {
