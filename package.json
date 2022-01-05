@@ -1,13 +1,14 @@
 {
   "name": "vue-relation-graph",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0-alpha.0",
   "sideEffects": false,
+  "description": "relation-graph，Vue 关联关系图谱组件，可以展示如组织机构图谱、股权架构图谱、集团关系图谱等知识图谱，可提供多种图谱布局，包括树状布局、中心布局、力学布局自动布局等。Vue component for relationship graph , which can display knowledge graphs, such as organization graph, equity structure graph, group relationship graph, etc.",
   "main": "dist/index.cjs.min.js",
   "module": "dist/index.esm.min.js",
   "files": [
     "dist"
   ],
+  "author": "seeks<seeksdream@qq.com> icebreaker<1324318532@qq.com>",
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.config.js"
   },
@@ -41,9 +42,36 @@
     "rollup-plugin-styles": "^3.14.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.1",
+    "rollup-plugin-vue": "5",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~4.5.4",
     "vue-template-compiler": "^2.6.11"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.12 || ^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonofmagic/relation-graph"
+  },
+  "homepage": "http://relation-graph.com",
+  "keywords": [
+    "relation-graph",
+    "relation",
+    "graph",
+    "knowledge graph",
+    "vue",
+    "components",
+    "关系图谱",
+    "知识图谱",
+    "vue图谱组件"
+  ],
+  "bugs": {
+    "url": "https://github.com/sonofmagic/relation-graph/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

@@ -1,13 +1,13 @@
 import typescript from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
 import styles from 'rollup-plugin-styles'
-
+import VuePlugin from 'rollup-plugin-vue'
 /** @type {import('rollup').RollupOptions[]} */
 const options = [
   {
-    input: 'src/index.ts',
-    plugins: [typescript(), styles()],
-    external: ['vue-demi', 'echarts/core', 'resize-detector'],
+    input: 'src/index.js',
+    plugins: [typescript(), styles(), VuePlugin()],
+    external: ['html2canvas', 'screenfull', 'vue'],
     output: [
       {
         file: 'dist/index.esm.js',

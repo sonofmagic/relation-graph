@@ -378,13 +378,13 @@ import html2canvas from 'html2canvas'
 import SeeksRGLayouters from './core4vue/SeeksRGLayouters'
 import SeeksRGUtils from './core4vue/SeeksRGUtils'
 import SeeksRGStore from './core4vue/SeeksRGStore'
-import SeeksRGNode from './core4vue/SeeksRGNode'
-import SeeksRGLink from './core4vue/SeeksRGLink'
-import GraphSettingPanel from './GraphSettingPanel'
-import GraphMiniView from './GraphMiniView'
-import GraphMiniToolBar from './GraphMiniToolBar'
-import GraphMiniNameFilter from './GraphMiniNameFilter'
-import GraphBottomPanel from './GraphBottomPanel'
+import SeeksRGNode from './core4vue/SeeksRGNode.vue'
+import SeeksRGLink from './core4vue/SeeksRGLink.vue'
+import GraphSettingPanel from './GraphSettingPanel.vue'
+import GraphMiniView from './GraphMiniView.vue'
+import GraphMiniToolBar from './GraphMiniToolBar.vue'
+import GraphMiniNameFilter from './GraphMiniNameFilter.vue'
+import GraphBottomPanel from './GraphBottomPanel.vue'
 export default {
   name: 'SeeksRelationGraph',
   components: {
@@ -443,7 +443,7 @@ export default {
       type: Function
     }
   },
-  data() {
+  data () {
     const wheelEvent = {}
     // console.log('this.options.disableZoom:', this.options.disableZoom)
     // if (this.options.disableZoom) {
@@ -499,7 +499,7 @@ export default {
     }
   },
   computed: {
-    canvasSizeAndPosition() {
+    canvasSizeAndPosition () {
       return {
         width: this.graphSetting.canvasSize.width + 'px',
         height: this.graphSetting.canvasSize.height + 'px',
@@ -523,7 +523,7 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this.SeeksRGStore = SeeksRGStore.createNewStore(this.options || {})
     this.graphSetting = this.SeeksRGStore.graphSetting
     this.graphSetting.instanceId = 'SRG' + parseInt(Math.random() * 100000)
@@ -540,7 +540,7 @@ export default {
       )
     }
   },
-  mounted() {
+  mounted () {
     this.init()
     window.addEventListener(
       'scroll',
@@ -552,12 +552,12 @@ export default {
     //   this.showZoomCenter()
     // }.bind(this), 1000)
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.alive = false
     const elx = this.$refs.seeksRelationGraph
     elx.remove()
   },
-  show() {
+  show () {
     this.resetViewSize()
     this.refreshNVAnalysisInfo()
     this.syncToolsPosition()
@@ -575,7 +575,7 @@ export default {
     //     // 'transform-origin': (this.graphSetting.canvasOffset.zoom_buff_x * 100).toFixed(2) + '% ' + (this.graphSetting.canvasOffset.zoom_buff_y * 100).toFixed(2) + '%'
     //   }
     // },
-    init() {
+    init () {
       this.$refs.rgCanvas.style.setProperty(
         '--stroke',
         "url('#" + this.graphSetting.instanceId + "-lineStyle')"
@@ -594,7 +594,7 @@ export default {
       this.refreshNVAnalysisInfo()
       this.syncToolsPosition()
     },
-    cycleTask() {
+    cycleTask () {
       if (this.alive) {
         const _box = this.$refs.seeksRelationGraph.getBoundingClientRect()
         if (
@@ -671,7 +671,7 @@ export default {
         }, 1000)
       }
     },
-    setOptions(options, callback) {
+    setOptions (options, callback) {
       this.SeeksRGStore = SeeksRGStore.createNewStore(options)
       this.graphSetting = this.SeeksRGStore.graphSetting
       this.graphSetting.instanceId = 'SRG' + parseInt(Math.random() * 100000)
@@ -695,13 +695,13 @@ export default {
       this.doLayout()
       callback(this)
     },
-    moveDebugPanel() {
+    moveDebugPanel () {
       this.debugPanelPosition = !this.debugPanelPosition
     },
-    mouseListenerEmpty() {
+    mouseListenerEmpty () {
       console.log('mouseListenerEmpty')
     },
-    mouseListener(e) {
+    mouseListener (e) {
       // if (e.target !== this.$refs.seeksRGCanvas) {
       //   return
       // }
@@ -736,7 +736,7 @@ export default {
         this.zoom(-5 * _zoomDirection, userZoomCenter)
       }
     },
-    getPositionOfCanvas(e) {
+    getPositionOfCanvas (e) {
       const userZoomCenter = {
         x: e.offsetX,
         y: e.offsetY
@@ -779,7 +779,7 @@ export default {
       }
       return userZoomCenter
     },
-    zoom(buff, userZoomCenter) {
+    zoom (buff, userZoomCenter) {
       if (this.graphSetting.canvasZoom + buff < 10) {
         return
       }
@@ -799,7 +799,7 @@ export default {
       this.graphSetting.canvasZoom = __new_zoom_value
       this.refreshNVAnalysisInfo()
     },
-    showZoomCenter(userZoomCenter, zoomBuff) {
+    showZoomCenter (userZoomCenter, zoomBuff) {
       if (!this.$refs.seeksRelationGraph) {
         return
       }
@@ -863,7 +863,7 @@ export default {
         buff_y
       }
     },
-    refreshNVAnalysisInfo() {
+    refreshNVAnalysisInfo () {
       if (!this.$refs.seeksRelationGraph) {
         console.error('cannot get view size !')
         return
@@ -900,7 +900,7 @@ export default {
       this.graphSetting.viewELSize.left = _view_info.left
       this.graphSetting.viewELSize.top = _view_info.top
     },
-    analysisByZoom(zoom, userZoomCenter) {
+    analysisByZoom (zoom, userZoomCenter) {
       const result = {
         NMViewPosition: { x: 0, y: 0 },
         NMViewCenter: { x: 0, y: 0 },
@@ -957,7 +957,7 @@ export default {
       result.NMCanvasSize.height = _NM_canvas_height
       return result
     },
-    syncToolsPosition() {
+    syncToolsPosition () {
       if (window.SeeksGraphDebug) console.log('on scroll...')
       if (!this.$refs.seeksRelationGraph) return
       const windowHeight = this.getWindowHeight()
@@ -988,35 +988,35 @@ export default {
         this.isNeedFixedTools4Bottom = false
       }
     },
-    getWindowWidth() {
+    getWindowWidth () {
       return window.innerWidth
         ? window.innerWidth
         : document.documentElement.clientWidth
-        ? document.documentElement.clientWidth
-        : screen.width
+          ? document.documentElement.clientWidth
+          : screen.width
     },
-    getWindowHeight() {
+    getWindowHeight () {
       return window.innerHeight
         ? window.innerHeight
         : document.documentElement.clientHeight
-        ? document.documentElement.clientHeight
-        : screen.height
+          ? document.documentElement.clientHeight
+          : screen.height
     },
-    getNodePositionTop(node) {
+    getNodePositionTop (node) {
       if (!node.offsetTop) return 0
       return (
         node.offsetTop +
         (node.parentNode ? this.getNodePositionTop(node.parentNode) : 0)
       )
     },
-    getNodePositionLeft(node) {
+    getNodePositionLeft (node) {
       if (!node.offsetLeft) return 0
       return (
         node.offsetLeft +
         (node.parentNode ? this.getNodePositionLeft(node.parentNode) : 0)
       )
     },
-    resetViewSize() {
+    resetViewSize () {
       this.graphSetting.viewSize.width =
         this.$refs.seeksRelationGraph.getBoundingClientRect().width
       this.graphSetting.viewSize.height =
@@ -1025,7 +1025,7 @@ export default {
       this.SeeksRGStore.resetViewSize()
       this.refreshNVAnalysisInfo()
     },
-    loadNodes(_nodes) {
+    loadNodes (_nodes) {
       _nodes.forEach((thisNodeJson) => {
         let thisNode = SeeksRGUtils.json2Node(thisNodeJson)
         let __isNew = false
@@ -1042,7 +1042,7 @@ export default {
         }
       })
     },
-    loadLinks(_links) {
+    loadLinks (_links) {
       _links.forEach((thisLinkJson) => {
         let __isNew = false
         let __from
@@ -1133,7 +1133,7 @@ export default {
         }
       })
     },
-    getLineArrow(_color) {
+    getLineArrow (_color) {
       if (_color) {
         const thisColorId = SeeksRGUtils.getColorId(_color)
         if (
@@ -1150,7 +1150,7 @@ export default {
         return this.graphSetting.instanceId + '-arrow-default'
       }
     },
-    flatNodeData(orign_nodes, parentNode, nodes_collect, links_collect) {
+    flatNodeData (orign_nodes, parentNode, nodes_collect, links_collect) {
       orign_nodes.forEach((thisOrignNode) => {
         if (!thisOrignNode.flated) {
           thisOrignNode.flated = true
@@ -1173,7 +1173,7 @@ export default {
         }
       })
     },
-    loadGraphJsonData(jsonData) {
+    loadGraphJsonData (jsonData) {
       // 兼容以前的配置
       if (!jsonData.links) jsonData.links = jsonData.lines
       if (!jsonData.links) jsonData.links = jsonData.relations
@@ -1186,7 +1186,7 @@ export default {
       if (window.SeeksGraphDebug) console.log('节点预处理完毕')
       this.loadLinks(jsonData.links)
     },
-    setJsonData(jsonData, callback) {
+    setJsonData (jsonData, callback) {
       this.viewSizeIsInited = true
       this.nodeViewList = []
       this.lineViewList = []
@@ -1227,7 +1227,7 @@ export default {
       this.doLayout()
       if (callback) callback(this)
     },
-    applyNewDataToCanvas() {
+    applyNewDataToCanvas () {
       this.graphData.nodes.forEach((thisNode) => {
         if (thisNode.appended === false) {
           thisNode.appended = true
@@ -1248,7 +1248,7 @@ export default {
         throw Error('没有设置根节点[rootId]！也无法获取根节点!')
       }
     },
-    appendJsonData(jsonData, isRelayout, callback) {
+    appendJsonData (jsonData, isRelayout, callback) {
       if (arguments.length === 2 && typeof isRelayout === 'function') {
         callback = isRelayout
         isRelayout = true
@@ -1260,7 +1260,7 @@ export default {
       if (isRelayout) this.doLayout()
       if (callback) callback(this)
     },
-    doLayout() {
+    doLayout () {
       if (this.graphSetting.layouter && this.graphData.rootNode) {
         console.log('需要布局的节点数量：', this.graphData.nodes.length)
         this.graphSetting.layouter.placeNodes(
@@ -1272,7 +1272,7 @@ export default {
       document.body.addEventListener('mousemove', this.wow)
       // document.body.removeEventListener('mousemove', this.graphOnClick)
     },
-    refresh() {
+    refresh () {
       this.resetViewSize()
       this.$nextTick(() => {
         this.graphSetting.layouter.refresh()
@@ -1280,19 +1280,19 @@ export default {
         document.body.addEventListener('mousemove', this.wow)
       })
     },
-    onDragStart(e) {
+    onDragStart (e) {
       SeeksRGUtils.startDrag(e, this.graphSetting.canvasOffset, this.onDragEnd)
     },
-    onDragEnd() {
+    onDragEnd () {
       this.refreshNVAnalysisInfo()
     },
-    addEventClick() {
+    addEventClick () {
       // window.addEventListener('click', this.graphOnClick)
     },
     // graphOnClick(evt) {
     //   console.log('click graph')
     // },
-    wow() {
+    wow () {
       if (window.SeeksGraphDebug) console.log('wow.....')
       this.graphSetting.canvasOffset.x = this.graphSetting.canvasOffset.x + 1
       this.graphSetting.canvasOffset.y = this.graphSetting.canvasOffset.y + 1
@@ -1300,7 +1300,7 @@ export default {
       this.graphSetting.canvasOffset.y = this.graphSetting.canvasOffset.y - 1
       document.body.removeEventListener('mousemove', this.wow)
     },
-    onRGNodeClick(nodeData, e) {
+    onRGNodeClick (nodeData, e) {
       if (this.onNodeClick) {
         this.onNodeClick(nodeData, e)
       }
@@ -1311,7 +1311,7 @@ export default {
       //   }
       // }
     },
-    onRGLineClick(lineData, e) {
+    onRGLineClick (lineData, e) {
       if (this.onLineClick) {
         this.onLineClick(lineData, e)
       }
@@ -1322,14 +1322,14 @@ export default {
       //   }
       // }
     },
-    getNodeById(nodeId) {
+    getNodeById (nodeId) {
       for (let i = 0; i < this.nodeViewList.length; i++) {
         if (this.nodeViewList[i].id === nodeId) {
           return this.nodeViewList[i]
         }
       }
     },
-    removeNodeById(nodeId) {
+    removeNodeById (nodeId) {
       let __removed_lines = 0
       for (let i = 0; i < this.lineViewList.length; i++) {
         const thisLine = this.lineViewList[i]
@@ -1366,7 +1366,7 @@ export default {
       }
       console.log('删除对应的节点个数：', nodeId, __removed_nodes)
     },
-    dataURLToBlob(dataurl) {
+    dataURLToBlob (dataurl) {
       // ie 图片转格式
       const arr = dataurl.split(',')
       const mime = arr[0].match(/:(.*?);/)[1]
@@ -1378,7 +1378,7 @@ export default {
       }
       return new Blob([u8arr], { type: mime })
     },
-    downloadAsImage(format) {
+    downloadAsImage (format) {
       if (this.beforeDownloadImage) {
         this.beforeDownloadImage()
       }
@@ -1544,7 +1544,7 @@ export default {
         })
       })
     },
-    querySearchAsync(queryString, callback) {
+    querySearchAsync (queryString, callback) {
       console.log('fetch-suggestions', queryString)
       queryString = queryString.trim()
       if (queryString === '') {
@@ -1560,18 +1560,18 @@ export default {
       console.log('fetched:', rst.length)
       callback(rst)
     },
-    focusRootNode() {
+    focusRootNode () {
       if (window.SeeksGraphDebug) console.log('relation-graph:focusRootNode')
       this.handleSelect(this.graphData.rootNode)
     },
-    focusNodeById(nodeId) {
+    focusNodeById (nodeId) {
       this.graphData.nodes.forEach((thisNode) => {
         if (thisNode.id === nodeId) {
           this.handleSelect(thisNode)
         }
       })
     },
-    handleSelect(thisNode) {
+    handleSelect (thisNode) {
       console.log('checked:', thisNode)
       scrollTo({
         top: this.$refs.seeksRelationGraph.offsetTop
@@ -1591,7 +1591,7 @@ export default {
         })
       })
     },
-    animateGoto(x, y, time, callback) {
+    animateGoto (x, y, time, callback) {
       const _distance_x = x - this.graphSetting.canvasOffset.x
       const _distance_y = y - this.graphSetting.canvasOffset.y
       const _allTime = time
@@ -1613,7 +1613,7 @@ export default {
         }
       )
     },
-    animateToZoom(finalZoom, time, callback) {
+    animateToZoom (finalZoom, time, callback) {
       const _zoom_distance = finalZoom - this.graphSetting.canvasZoom
       const _allTime = time
       const _allStepNum = 5
@@ -1632,7 +1632,7 @@ export default {
         }
       )
     },
-    animateStepAction(
+    animateStepAction (
       stepIndex,
       delay,
       allStepNum,
@@ -1655,25 +1655,25 @@ export default {
         finalCallback()
       }
     },
-    getNodes() {
+    getNodes () {
       return this.nodeViewList
     },
-    getLines() {
+    getLines () {
       return this.lineViewList
     },
-    onNodeExpandEvent(node, e) {
+    onNodeExpandEvent (node, e) {
       console.log('onNodeExpand:', node)
       if (this.onNodeExpand) {
         this.onNodeExpand(node, e)
       }
     },
-    onNodeCollapseEvent(node, e) {
+    onNodeCollapseEvent (node, e) {
       console.log('onNodeCollapse:', node)
       if (this.onNodeCollapse) {
         this.onNodeCollapse(node, e)
       }
     },
-    getGraphJsonData() {
+    getGraphJsonData () {
       const _nodes = []
       const _links = []
       this.graphData.nodes.forEach((thisNode) => {
@@ -1688,10 +1688,10 @@ export default {
         links: _links
       }
     },
-    getGraphJsonOptions() {
+    getGraphJsonOptions () {
       return this.SeeksRGStore.getOptions()
     },
-    printGraphJsonData() {
+    printGraphJsonData () {
       console.log('graph options:', JSON.stringify(this.getGraphJsonOptions()))
       console.log('graph json data:', JSON.stringify(this.getGraphJsonData()))
     }
