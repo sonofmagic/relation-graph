@@ -10,7 +10,10 @@
   ],
   "author": "seeks<seeksdream@qq.com> icebreaker<1324318532@qq.com>",
   "scripts": {
-    "build": "rimraf dist && rollup -c rollup.config.js"
+    "build": "rimraf dist && rollup -c rollup.config.js",
+    "serve": "vue-cli-service serve",
+    "build:demo": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "html2canvas": "^1.4.0",
@@ -21,13 +24,14 @@
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.9.0",
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
+    "cross-env": "^7.0.3",
+    "element-ui": "^2.15.6",
     "eslint": "7.12.1",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "2.22.1",
@@ -46,6 +50,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~4.5.4",
+    "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SeeksRelationGraph from 'relation-graph'
+import SeeksRelationGraph from '../../index'
 export default {
   name: 'Demo',
   components: { SeeksRelationGraph },

@@ -1,18 +1,26 @@
 <template>
   <div>
-    <div style="height:calc(100vh - 50px);">
+    <div style="height: calc(100vh - 50px)">
       <SeeksRelationGraph
         ref="seeksRelationGraph"
         :options="graphOptions"
         :on-node-click="onNodeClick"
-        :on-line-click="onLineClick" />
+        :on-line-click="onLineClick"
+      />
     </div>
-    <el-button type="success" class="c-show-code-button"><el-link href="https://github.com/seeksdream/relation-graph/blob/master/doc/demo/Demo4Graph.vue" target="_blank" style="color: #ffffff;">查看代码</el-link></el-button>
+    <el-button type="success" class="c-show-code-button"
+      ><el-link
+        href="https://github.com/seeksdream/relation-graph/blob/master/doc/demo/Demo4Logo.vue"
+        target="_blank"
+        style="color: #ffffff"
+        >查看代码</el-link
+      ></el-button
+    >
   </div>
 </template>
 
 <script>
-import SeeksRelationGraph from 'relation-graph'
+import SeeksRelationGraph from '../../index'
 export default {
   name: 'Demo',
   components: { SeeksRelationGraph },
@@ -47,9 +55,12 @@ export default {
           { from: 'b', to: 'e', text: '', color: '#67C23A' }
         ]
       }
-      this.$refs.seeksRelationGraph.setJsonData(__graph_json_data, (seeksRGGraph) => {
-        // 这些写上当图谱初始化完成后需要执行的代码
-      })
+      this.$refs.seeksRelationGraph.setJsonData(
+        __graph_json_data,
+        (seeksRGGraph) => {
+          // 这些写上当图谱初始化完成后需要执行的代码
+        }
+      )
     },
     onNodeClick(nodeObject, $event) {
       console.log('onNodeClick:', nodeObject)
@@ -62,9 +73,7 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
 
 <style lang="scss" scoped>
-
 </style>
