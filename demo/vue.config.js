@@ -1,9 +1,11 @@
 
 /**
- * @type {import('@vue/cli-service').ProjectOptions}
+ * @type {import('@vue/cli-service').ProjectOptions} config
  */
-module.exports = {
-  chainWebpack: config => {
-    config.entry('app').clear().add('./src/demo/main.ts')
-  }
+const config = {
+
+  // chainWebpack: config => {
+  //   config.entry('app').clear().add('./src/main.ts')
+  // }
 }
+module.exports = config

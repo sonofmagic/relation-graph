@@ -33,7 +33,7 @@ npm install --save relation-graph
 </template>
 
 <script>
-import RelationGraph from '../../index'
+import RelationGraph from '@/../../'
 export default {
   name: 'Demo',
   components: { RelationGraph },

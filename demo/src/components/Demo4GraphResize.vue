@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import SeeksRelationGraph from '../../index'
+import SeeksRelationGraph from '@/../../'
 
 export default {
   name: 'SeeksRelationGraphDemo',

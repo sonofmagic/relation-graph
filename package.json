@@ -10,10 +10,7 @@
   ],
   "author": "seeks<seeksdream@qq.com> icebreaker<1324318532@qq.com>",
   "scripts": {
-    "build": "rimraf dist && rollup -c rollup.config.js",
-    "serve": "vue-cli-service serve",
-    "build:demo": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "rimraf dist && rollup -c rollup.config.js"
   },
   "dependencies": {
     "html2canvas": "^1.4.0",
@@ -24,6 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.9.0",
     "cross-env": "^7.0.3",
+    "css-selector-tokenizer": "^0.8.0",
     "eslint": "7.12.1",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "2.22.1",
@@ -40,7 +38,8 @@
     "rollup-plugin-typescript2": "^0.31.1",
     "rollup-plugin-vue": "5",
     "sass": "^1.26.5",
-    "typescript": "~4.5.4"
+    "typescript": "~4.5.4",
+    "vue-template-compiler": "^2.6.14"
   },
   "peerDependencies": {
     "vue": "^2.6.12 || ^3.1.1"

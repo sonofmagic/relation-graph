@@ -13,16 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env"],
     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "shims-vue.d.ts",
-    "src/demo/**/*.ts",
-    "src/demo/**/*.vue"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
